@@ -6,6 +6,7 @@ import ContactUs from "./ContactUs";
 import About from "./About";
 import Nav from "./Nav";
 import Signup from "./Signup";
+import { Mobile } from "./Mobile";
 
 const Landing = () => {
   return (
@@ -17,6 +18,8 @@ const Landing = () => {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<About />} />
         <Route path="/sign" element={<Signup />} />
+        <Route path="/mobile" element={<Mobile />} />
+
       </Routes>
     </BrowserRouter>
   );

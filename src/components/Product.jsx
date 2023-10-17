@@ -15,6 +15,7 @@ const Product = () => {
   const [dataCopy, setDataCopy] = useState([]);
   const [category, setcategory] = useState([]);
   const [cate, setcate] = useState([]);
+  const [text, setText] = useState("");
   // console.log(category);
   // console.log(data);
   const getApi = async () => {
@@ -33,11 +34,23 @@ const Product = () => {
     const filt = dataCopy.filter((item) => item.category == cate);
     setData(filt);
   }, [cate]);
+
+  useEffect(() => {
+    const filt = dataCopy.filter((item) =>
+      item.category.toUpperCase().includes(text.toUpperCase())
+    );
+    setData(filt);
+  }, [text]);
+
   return (
     <Grid container spacing={3}>
+      {/* <Grid item xs={12}>
+        <TextField variant="outlined" label="Search Here..." fullWidth />
+    </Grid> */}
       <Grid item xs={8}>
         <TextField
           sx={{ marginTop: "10px" }}
+          onChange={(e) => setText(e.target.value)}
           variant="outlined"
           label="Search Here..."
           fullWidth
