@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import AddToCart from "./AddToCart";
 
 const Product = () => {
   const [data, setData] = useState([]);
@@ -16,6 +17,7 @@ const Product = () => {
   const [category, setcategory] = useState([]);
   const [cate, setcate] = useState([]);
   const [text, setText] = useState("");
+  
   // console.log(category);
   // console.log(data);
   const getApi = async () => {
@@ -41,6 +43,15 @@ const Product = () => {
     );
     setData(filt);
   }, [text]);
+
+  const handleDelete=(elem)=>{
+      const resultDelete=data.filter((i)=>i !== elem);
+      setData(resultDelete);
+  }
+
+  const handleAddToCart=(item)=>{
+      sessionStorage.setItem("data",{state:item})
+  }
 
   return (
     <Grid container spacing={3}>
@@ -96,13 +107,19 @@ const Product = () => {
                 <Button variant="contained" color="success">
                   Add To Cart
                 </Button>
-                <Button
+                <Button variant="contained" color="success" onClick={handleDelete}>
+                  DELETE
+                </Button>
+                <Button variant="contained" color="success" onClick={handleAddToCart}>
+                  Add Cart
+                </Button>
+                {/* <Button
                   sx={{ marginLeft: "10px" }}
                   variant="contained"
                   color="success"
                 >
                   Buy
-                </Button>
+                </Button> */}
               </CardContent>
             </Card>
           </Grid>
