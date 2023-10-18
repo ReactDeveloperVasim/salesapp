@@ -43,7 +43,7 @@ const Product = () => {
     );
     setData(filt);
   }, [text]);
-
+//asdsff
   const handleDelete=(elem)=>{
       const resultDelete=data.filter((i)=>i !== elem);
       setData(resultDelete);
